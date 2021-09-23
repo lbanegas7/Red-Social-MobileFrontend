@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WhatsApp</title>
+        <link rel="shortcut icon" href="./recursos/icoWpp.ico" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://kit.fontawesome.com/4577d56613.js" crossorigin="anonymous"></script>
+    </head>
+    <body >
+
+        <header id="headerr">
+            
+            <nav class="navbar" id="navBar">
+                <div class="container-fluid">
+                    <p class="h4 wpp" id="tituloWpp">WhatsApp</p>
+
+                    <!-- elementos chat -->
+                    <i class="fas fa-caret-left" id="iconoChat" onclick="returnChats()"></i>
+                    <img src="./recursos/profile-pics/bulma.jpg" alt="imagen " class="imagenChatU" id="imgChatt">
+                    <p class="h4 nombreUsuarioConversacion" id="nameChatt">Bulma</p>                    
+                    
+                    <div class="btn dropdown-toggle" id="usuarioSelect" role="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
+                        <img src="./recursos/stickers/1.webp" alt="imagen Usuario" class="imgHeaderUser">
+                    </div>
+                    
+                    
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <p class="tituloBoxUsuarios">Seleccione un usuario:</p>
+                            <div class="container">
+                                <div class="row" id="rowSelectUsuario">
+                                    <div class="col-2" onclick="usuarioSeleccionado(14)" role="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <img class="imgBoxUser" src="./recursos/profile-pics/androide_19.jpg" alt="">
+                                    </div>       
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    
+                    <div class="nav2" id="opcionSelectUsuario">
+
+                        <ul class="nav nav-tabs">
+                            <li  onclick="conversacionesUsuario()" id="chatsView">CHATS</li>
+                            <li  onclick="contactsUsuario()" id="contactsView">CONTACTS</li>
+                        </ul>
+
+                    </div>
+                </div> 
+            </nav>  
+            
+
+        </header>
+        <main id="main">
+        <div class="contChat" >
+            <div class="container" id="contChat">
+                
+                <div class="row mt-4" >
+                    <div class="col-3">
+                        <img src="./recursos/profile-pics/vegeta.jpg" alt="img perfil">
+                    </div>
+                    <div class="col-5">
+                        <p class="NombreChats">Vegeta</p>
+                        <p class="Mensaje">Vegeta: Insecto!!!</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="Hora">10:00 pm</p>
+                    </div>
+                    
+                </div>
+                <hr> 
+            </div>
+        </div>
+
+        <!-- DIV PARA CONTACTS -->
+        <div class="contacts" id="contacts" >
+            
+            <button class="btn newContact mb-4"  role="button" data-bs-toggle="modal" data-bs-target="#newContact">Nuevo contacto</button>
+
+            <div class="container" id="cntContacts">
+                                
+            </div>
+
+        </div>
+
+        <!-- modal -->
+        <div class="modal fade" id="newContact" tabindex="-1" aria-labelledby="newContactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newContactLabel">Nuevo contacto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <input class="form-control" type="text" placeholder="Nombre" id="name" aria-label="default input example">
+                        <select class="form-select" id="imagenId" aria-label="Default select example" onchange="imagenContactoSeleccionada()">
+                            <option selected value="100">Imagen de perfil</option>
+                            <option value="androide_16.jpg">androide_16.jpg</option>
+                            <option value="androide_18.jpg">androide_18.jpg</option>
+                            <option value="androide_19.jpg">androide_19.jpg</option>
+                            <option value="baby.jpg">baby.jpg</option>
+                            <option value="bulma.jpg">bulma.jpg</option>
+                            <option value="cell.jpg">cell.jpg</option>
+                            <option value="chaozu.jpg">chaozu.jpg</option>
+                            <option value="dende.jpg">dende.jpg</option>
+                            <option value="dodoria.jpg">dodoria.jpg</option>
+                            <option value="freezer.jpg">freezer.jpg</option>
+                            <option value="gohan.jpg">gohan.jpg</option>
+                            <option value="goku.jpg">goku.jpg</option>
+                            <option value="goten.png">goten.png</option>
+                            <option value="kami.jpg">kami.jpg</option>
+                            <option value="kibito.jpg">kibito.jpg</option>
+                            <option value="krilin.jpg">krilin.jpg</option>
+                            <option value="majinboo.jpg">majinboo.jpg</option>
+                            <option value="mr_satan.jpg">mr_satan.jpg</option>
+                            <option value="nappa.jpg">nappa.jpg</option>
+                            <option value="oolong.jpg">oolong.jpg</option>
+                        </select>
+
+                        
+                        <button class="btn btn-guardar" data-bs-dismiss="modal" id="btnSave" onclick="GuardarUsuario()" disabled>Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </main>  
+
+        <!-- Conversacion con algun usuario -->
+        <div class="chatUsers" id="chatUsers">
+            
+            <div class="msj" id="mensajesConversacion">     
+            </div>
+
+            <!-- Contenedor de stikers, ventana a mostrar para seleccionar un stiker -->
+            <div class="contenedorStickers" id="contStickers">
+
+                <div class="container">
+                    <div class="row boximgs" id="allStickers">
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Barra inferior Chat -->
+            <div class = "boxmsj">
+
+                <i class="far fa-sticky-note" onclick="mostrarStikers()"></i>
+               
+                <form onsubmit="return false;">
+                    <input class="form-control-sm" type="text" id="inputMsj" placeholder="Escribir..." >
+                </form>
+                <button class="btn btn-col" type="button" onclick="enviarNuevoMensaje()">Enviar</button>
+                
+            </div>
+
+        </div>
+    
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="./js/controlador.js"></script>
+    </body>
+</html>
