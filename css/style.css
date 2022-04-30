@@ -236,12 +236,13 @@ li{
 .newContact{
     background-color: #00D17B;
     color: #ffffff;
-    width: 100px;
-    height: 25px;
+    width: auto;
+    display: block;
+    /* height: 25px; */
     font-size: 13px;
-    padding: 3px 5px;
+    padding: 6px 7px;
     margin-top: 10%;
-    margin-left: 40%;
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -290,11 +291,14 @@ li{
     margin-top: 10px;
     background-color: #00D17B;
     border: 0;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.9rem;
 
 }
 
 .btn-guardar:hover{
-    background-color: green;
+    background-color: #01c472;
+    color: #ffffff;
 }
 
 .form-select{
@@ -460,4 +464,45 @@ li{
 }
 .userSend img{
     width: 175px;
+}
+
+.fas, .row{
+    cursor: pointer;
+}
+
+.nav-tabs li{
+    cursor: pointer;
+}
+
+#headerr, #main{
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.chatUsers, .contacts{
+    margin: 0 auto;
+    max-width: 480px;
+}
+
+.modal-content{
+    max-width: 480px;
+}
+.btn-style{
+    background: none;
+    border: none;
+}
+.btn-style svg{
+    fill: #8F9AA0;
+    font-weight: bold;
+    background: none;
+    width: 18px;
+    height: 20px;
+}
+
+.btn-guardar{
+    color: white;
+}
+
+.msj::-webkit-scrollbar,.contenedorStickers::-webkit-scrollbar {
+    display: none;
 }
