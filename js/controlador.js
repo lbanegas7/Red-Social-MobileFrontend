@@ -842,51 +842,55 @@ function enviarNuevoMensaje(){
 
     let mensajeNuevo = document.getElementById('inputMsj').value;
 
-    document.getElementById('mensajesConversacion').innerHTML += `<div class="me">${mensajeNuevo}</div>`;
+    if(mensajeNuevo != ''){
 
-    let chat = `chat-${usuarioActualSeleccionado}-${idUsuarioChatActivo}`;
-    let chatOption = `chat-${idUsuarioChatActivo}-${usuarioActualSeleccionado}`;
-
-    //obtenemos las conversaciones
-    let conversaciones = JSON.parse(localStorage.getItem('conversaciones'));
-
-    //obtenermos los usuarios
-    let usuarios = JSON.parse(localStorage.getItem('usuarios'))
-
-    //guardamos el nuevo mensaje en la conversacion
-    for (let j = 0; j < conversaciones.length; j++) {
-        if(conversaciones[j].chat == chat || conversaciones[j].chat == chatOption){
-            let newMsj = {
-                emisor:usuarioActualSeleccionado,
-                receptor: idUsuarioChatActivo,
-                mensaje: mensajeNuevo,
-                tipo:'text',
-                hora: '18:00'
+        document.getElementById('mensajesConversacion').innerHTML += `<div class="me">${mensajeNuevo}</div>`;
+    
+        let chat = `chat-${usuarioActualSeleccionado}-${idUsuarioChatActivo}`;
+        let chatOption = `chat-${idUsuarioChatActivo}-${usuarioActualSeleccionado}`;
+    
+        //obtenemos las conversaciones
+        let conversaciones = JSON.parse(localStorage.getItem('conversaciones'));
+    
+        //obtenemos los usuarios
+        let usuarios = JSON.parse(localStorage.getItem('usuarios'))
+    
+        //guardamos el nuevo mensaje en la conversacion
+        for (let j = 0; j < conversaciones.length; j++) {
+            if(conversaciones[j].chat == chat || conversaciones[j].chat == chatOption){
+                let newMsj = {
+                    emisor:usuarioActualSeleccionado,
+                    receptor: idUsuarioChatActivo,
+                    mensaje: mensajeNuevo,
+                    tipo:'text',
+                    hora: '18:00'
+                }
+                conversaciones[j].mensajes.push(newMsj);
             }
-            conversaciones[j].mensajes.push(newMsj);
+    
         }
-
+    
+        // Agregamos los nuevos cambios 
+        localStorage.setItem('conversaciones',JSON.stringify(conversaciones));
+        document.getElementById('inputMsj').value = '';
+    
+        //actualizamos el estado de la previzualizacion de la conversacion
+        usuarios[usuarioActualSeleccionado].conversaciones.forEach(conversacion =>{
+            if(conversacion.id == chat || conversacion.id == chatOption){
+                conversacion.ultimoMensaje = `Yo: ${mensajeNuevo}`;
+            }
+        });
+    
+        usuarios[idUsuarioChatActivo].conversaciones.forEach(conver =>{
+            if(conver.id == chat || conver.id == chatOption){
+                conver.ultimoMensaje = `${mensajeNuevo}`
+            }
+        });
+    
+        // guardamos y actualizamos el estado de la previzualizacion de los mensajes.
+        localStorage.setItem('usuarios',JSON.stringify(usuarios));
+        
+        this.usuarioSeleccionado(usuarioActualSeleccionado);
     }
 
-    // Agregamos los nuevos cambios 
-    localStorage.setItem('conversaciones',JSON.stringify(conversaciones));
-    document.getElementById('inputMsj').value = '';
-
-    //actualizamos el estado de la previzualizacion de la conversacion
-    usuarios[usuarioActualSeleccionado].conversaciones.forEach(conversacion =>{
-        if(conversacion.id == chat || conversacion.id == chatOption){
-            conversacion.ultimoMensaje = `Yo: ${mensajeNuevo}`;
-        }
-    });
-
-    usuarios[idUsuarioChatActivo].conversaciones.forEach(conver =>{
-        if(conver.id == chat || conver.id == chatOption){
-            conver.ultimoMensaje = `${mensajeNuevo}`
-        }
-    });
-
-    // guardamos y actualizamos el estado de la previzualizacion de los mensajes.
-    localStorage.setItem('usuarios',JSON.stringify(usuarios));
-    
-    this.usuarioSeleccionado(usuarioActualSeleccionado);
 }

@@ -368,6 +368,7 @@ li{
     margin-right: 2%;
     margin-top: 3.5%;
     font-size: 13px;
+    padding: 8px 10px;
 }
 
 .boxmsj{
@@ -376,30 +377,26 @@ li{
     height: 10vh;
     background-color: #0C1D26;
     margin: 0;
-    float: left;
+    /* float: left; */
     
 }
 
 .form-control-sm{
-    position: absolute;
     margin: 0;
-    top: 0;
     border-radius: 10px;
     outline: none;
     border: none;
-    padding: 8px 5px;
-    width: 60%;
-    margin-left: 15%;
-    margin-top: 3.5%;
-    
+    padding: 0 0.4rem;
+    width: 100%;  
+    height: 5.5vh;  
 }
 
-.fa-sticky-note:before{
-    display: inline-block;
-    font-size: 40px;
-    margin-right: 10px;
+.fa-sticky-note{
+    display: block;
+    font-size: 2.2rem;
     color: #8F9AA0;
     cursor: pointer;
+    margin: auto;
     
 }
 
@@ -431,11 +428,6 @@ li{
     margin-bottom: 10px;
 }
 
-.boxmsj i{
-    margin-top: 3.5%;
-    margin-left: 2%;
-
-}
 
 .me{
     padding: 3px 10px;
@@ -505,4 +497,39 @@ li{
 
 .msj::-webkit-scrollbar,.contenedorStickers::-webkit-scrollbar {
     display: none;
+}
+
+.btn-send-msj:hover{
+    background: #02c172;
+    color: #fdfdfd;
+}
+
+.btn-send-msj{
+    width: 90%;
+    /* height: 38px; */
+    height: 2.18rem;
+    border-radius: 10px;
+    padding: 0 0.2rem;
+    font-size: 0.8rem;
+    background: #02d27b;
+    color: #fdfdfd;
+}
+
+.row{
+    height: 100%;
+    align-items: center;
+}
+
+.col-2{
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    margin: 0;
+}
+
+.fa-sticky-note:hover{
+    color: #858f94;
 }

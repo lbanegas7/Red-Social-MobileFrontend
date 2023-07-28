@@ -155,16 +155,18 @@
             </div>
 
             <!-- Barra inferior Chat -->
-            <div class = "boxmsj">
-
-                <i class="far fa-sticky-note" onclick="mostrarStikers()"></i>
-               
-                <!-- <form onsubmit="return false;"> -->
-                <form>
-                    <input class="form-control-sm" type="text" id="inputMsj" placeholder="Escribir..." >
-                </form>
-                <button class="btn btn-col" type="button" onclick="enviarNuevoMensaje()">Enviar</button>
-                
+            <div class = "boxmsj container">
+                <div class="row">
+                    <div class="col-2 ">
+                        <i class="far fa-sticky-note" onclick="mostrarStikers()"></i>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control-sm" autocomplete="off" type="text" id="inputMsj" placeholder="Escribir..." >
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-send-msj" type="button" onclick="enviarNuevoMensaje()">Enviar</button>
+                    </div>
+                </div>            
             </div>
 
         </div>
